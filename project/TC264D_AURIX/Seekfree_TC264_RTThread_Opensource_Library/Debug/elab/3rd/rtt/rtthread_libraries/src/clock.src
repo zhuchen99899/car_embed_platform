@@ -1,0 +1,963 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r7 Build 21033142"
+	.compiler_invocation	"ctc -f cc39380a --dep-file=elab/3rd/rtt/rtthread_libraries/src/clock.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc26xb -D__CPU_TC26XB__ --core=tc1.6.x --fp-model=+float -D__CPU__=tc26xb -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\config -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\elab\\\\common -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\elab\\\\os\\\\mcu_rtt -ID:/work/Bilibili/cross_platform/elab/os -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\elab\\\\3rd\\\\rtthread\\\\rtthread_libraries\\\\bsp -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\elab\\\\3rd\\\\rtthread\\\\rtthread_libraries\\\\include -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\elab\\\\3rd\\\\rtthread\\\\rtthread_libraries\\\\libcpu\\\\TC264D -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\elab\\\\3rd\\\\rtthread\\\\rtthread_libraries\\\\include\\\\libc -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\USER -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Configurations -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Infra -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Infra\\\\Platform -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Infra\\\\Sfr -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC26B -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC26B\\\\_Reg -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Service -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\StdIf -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Comm -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\General -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Time -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Asc -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Lin -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Spi -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6 -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Icu -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\PwmBc -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\PwmHl -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\TPwm -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Timer -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\TimerWithTrigger -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cif -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cif\\\\Cam -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cif\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\CStart -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Irq -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Trap -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Dma -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc\\\\Dsadc -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc\\\\Rdc -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dsadc\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dts -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dts\\\\Dts -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dts\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Emem -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Emem\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eray -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eray\\\\Eray -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eray\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eth -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eth\\\\Phy_Pef7071 -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Eth\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fce -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fce\\\\Crc -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fce\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fft -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fft\\\\Fft -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Fft\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12 -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\IncrEnc -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\PwmHl -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\Timer -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tim -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tim\\\\In -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom\\\\Pwm -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom\\\\PwmHl -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Tom\\\\Timer -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Trig -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Hssl -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Hssl\\\\Hssl -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Hssl\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\I2c -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\I2c\\\\I2c -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\I2c\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Iom -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Iom\\\\Driver -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Iom\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Msc -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Msc\\\\Msc -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Msc\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Multican -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Multican\\\\Can -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Multican\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port\\\\Io -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5 -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5\\\\Psi5 -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5s -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5s\\\\Psi5s -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Psi5s\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\SpiMaster -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\SpiSlave -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Sent -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Sent\\\\Sent -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Sent\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Smu -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Smu\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm\\\\Timer -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Adc -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Std -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Impl -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib\\\\DataHandling -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib\\\\InternalMux -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_PinMap -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\seekfree_libraries -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\seekfree_libraries\\\\board -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\seekfree_libraries\\\\common -ID:\\\\work\\\\Bilibili\\\\cross_platform\\\\project\\\\TC264D_AURIX\\\\Seekfree_TC264_RTThread_Opensource_Library\\\\driver\\\\Libraries\\\\seekfree_peripheral -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2012 -o elab/3rd/rtt/rtthread_libraries/src/clock.src D:/work/Bilibili/cross_platform/elab/3rd/rtthread/rtthread_libraries/src/clock.c"
+	.compiler_name		"ctc"
+	;source	'D:/work/Bilibili/cross_platform/elab/3rd/rtthread/rtthread_libraries/src/clock.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.clock.rt_tick_get',code,cluster('rt_tick_get')
+	.sect	'.text.clock.rt_tick_get'
+	.align	2
+	
+	.global	rt_tick_get
+; Function rt_tick_get
+.L9:
+rt_tick_get:	.type	func
+	movh.a	a15,#@his(rt_tick)
+	lea	a15,[a15]@los(rt_tick)
+	ld.w	d2,[a15]
+.L86:
+	j	.L2
+.L2:
+	ret
+.L50:
+	
+__rt_tick_get_function_end:
+	.size	rt_tick_get,__rt_tick_get_function_end-rt_tick_get
+.L26:
+	; End of function
+	
+	.sdecl	'.text.clock.rt_tick_set',code,cluster('rt_tick_set')
+	.sect	'.text.clock.rt_tick_set'
+	.align	2
+	
+	.global	rt_tick_set
+; Function rt_tick_set
+.L11:
+rt_tick_set:	.type	func
+	mov	d15,d4
+.L66:
+	call	rt_hw_interrupt_disable
+.L65:
+	movh.a	a15,#@his(rt_tick)
+	lea	a15,[a15]@los(rt_tick)
+.L91:
+	st.w	[a15],d15
+.L92:
+	mov	d4,d2
+.L68:
+	call	rt_hw_interrupt_enable
+.L67:
+	ret
+.L51:
+	
+__rt_tick_set_function_end:
+	.size	rt_tick_set,__rt_tick_set_function_end-rt_tick_set
+.L31:
+	; End of function
+	
+	.sdecl	'.text.clock.rt_tick_increase',code,cluster('rt_tick_increase')
+	.sect	'.text.clock.rt_tick_increase'
+	.align	2
+	
+	.global	rt_tick_increase
+; Function rt_tick_increase
+.L13:
+rt_tick_increase:	.type	func
+	movh.a	a15,#@his(rt_tick)
+	lea	a15,[a15]@los(rt_tick)
+	movh.a	a2,#@his(rt_tick)
+	lea	a2,[a2]@los(rt_tick)
+	ld.w	d15,[a2]
+.L97:
+	add	d15,#1
+	st.w	[a15],d15
+.L98:
+	call	rt_thread_self
+.L69:
+	mov.aa	a15,a2
+.L71:
+	ld.w	d15,[a15]70
+.L99:
+	add	d15,#-1
+	st.w	[a15]70,d15
+.L100:
+	ld.w	d15,[a15]70
+.L101:
+	jne	d15,#0,.L3
+.L58:
+	ld.w	d15,[a15]66
+.L102:
+	st.w	[a15]70,d15
+.L103:
+	call	rt_hw_interrupt_disable
+.L70:
+	ld.bu	d15,[a15]52
+.L104:
+	or	d15,#8
+	st.b	[a15]52,d15
+.L105:
+	mov	d4,d2
+.L73:
+	call	rt_hw_interrupt_enable
+.L72:
+	call	rt_schedule
+.L3:
+	call	rt_timer_check
+.L106:
+	ret
+.L55:
+	
+__rt_tick_increase_function_end:
+	.size	rt_tick_increase,__rt_tick_increase_function_end-rt_tick_increase
+.L36:
+	; End of function
+	
+	.sdecl	'.text.clock.rt_tick_from_millisecond',code,cluster('rt_tick_from_millisecond')
+	.sect	'.text.clock.rt_tick_from_millisecond'
+	.align	2
+	
+	.global	rt_tick_from_millisecond
+; Function rt_tick_from_millisecond
+.L15:
+rt_tick_from_millisecond:	.type	func
+	jge	d4,#0,.L4
+.L111:
+	mov	d2,#-1
+.L74:
+	j	.L5
+.L4:
+	mov	d15,#1000
+.L112:
+	div	e0,d4,d15
+.L113:
+	mov	d2,#1000
+.L75:
+	mul	d2,d0
+.L114:
+	mov	d15,#1000
+.L115:
+	div	e0,d4,d15
+.L116:
+	mov	d15,#1000
+.L117:
+	mov	d3,#999
+.L118:
+	madd	d15,d3,d1,d15
+.L119:
+	mov	d0,#1000
+.L120:
+	div	e0,d15,d0
+.L121:
+	add	d2,d0
+.L5:
+	j	.L6
+.L6:
+	ret
+.L60:
+	
+__rt_tick_from_millisecond_function_end:
+	.size	rt_tick_from_millisecond,__rt_tick_from_millisecond_function_end-rt_tick_from_millisecond
+.L41:
+	; End of function
+	
+	.sdecl	'.text.clock.rt_tick_get_millisecond',code,cluster('rt_tick_get_millisecond')
+	.sect	'.text.clock.rt_tick_get_millisecond'
+	.align	2
+	
+	.global	rt_tick_get_millisecond
+; Function rt_tick_get_millisecond
+.L17:
+rt_tick_get_millisecond:	.type	func
+	call	rt_tick_get
+.L126:
+	mul	d2,d2,#1
+.L127:
+	j	.L7
+.L7:
+	ret
+.L64:
+	
+__rt_tick_get_millisecond_function_end:
+	.size	rt_tick_get_millisecond,__rt_tick_get_millisecond_function_end-rt_tick_get_millisecond
+.L46:
+	; End of function
+	
+	.sdecl	'.data.clock.rt_tick',data,cluster('rt_tick')
+	.sect	'.data.clock.rt_tick'
+	.align	2
+rt_tick:	.type	object
+	.size	rt_tick,4
+	.space	4
+	.calls	'rt_tick_set','rt_hw_interrupt_disable'
+	.calls	'rt_tick_set','rt_hw_interrupt_enable'
+	.calls	'rt_tick_increase','rt_thread_self'
+	.calls	'rt_tick_increase','rt_hw_interrupt_disable'
+	.calls	'rt_tick_increase','rt_hw_interrupt_enable'
+	.calls	'rt_tick_increase','rt_schedule'
+	.calls	'rt_tick_increase','rt_timer_check'
+	.calls	'rt_tick_get_millisecond','rt_tick_get'
+	.calls	'rt_tick_get','',0
+	.calls	'rt_tick_set','',0
+	.calls	'rt_tick_increase','',0
+	.calls	'rt_tick_from_millisecond','',0
+	.weak	rt_tick_get_millisecond
+	.extern	rt_timer_check
+	.extern	rt_thread_self
+	.extern	rt_schedule
+	.extern	rt_hw_interrupt_disable
+	.extern	rt_hw_interrupt_enable
+	.calls	'rt_tick_get_millisecond','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L19:
+	.word	1728
+	.half	3
+	.word	.L20
+	.byte	4
+.L18:
+	.byte	1
+	.byte	'D:/work/Bilibili/cross_platform/elab/3rd/rtthread/rtthread_libraries/src/clock.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'D:\\work\\Bilibili\\cross_platform\\project\\TC264D_AURIX\\Seekfree_TC264_RTThread_Opensource_Library\\Debug\\',0
+	.byte	12,1
+	.word	.L21
+.L49:
+	.byte	2
+	.byte	'unsigned int',0,4,7
+.L53:
+	.byte	2
+	.byte	'long int',0,4,5,2
+	.byte	'char',0,1,6,3,8
+	.word	307
+	.byte	4,7,0,2
+	.byte	'unsigned char',0,1,8,5
+	.word	.L76-.L19
+.L76:
+	.byte	6
+	.byte	'rt_list_node',0,1,229,2,8,8,7
+	.byte	'next',0
+	.word	341
+	.byte	4,2,35,0,7
+	.byte	'prev',0
+	.word	341
+	.byte	4,2,35,4,0,8
+	.byte	'void',0,5
+	.word	394
+	.byte	2
+	.byte	'unsigned long int',0,4,7,6
+	.byte	'rt_object',0,1,131,3,8,20,7
+	.byte	'name',0
+	.word	315
+	.byte	8,2,35,0,7
+	.byte	'type',0
+	.word	324
+	.byte	1,2,35,8,7
+	.byte	'flag',0
+	.word	324
+	.byte	1,2,35,9,7
+	.byte	'list',0
+	.word	346
+	.byte	8,2,35,12,0,3,8
+	.word	346
+	.byte	4,0,0,9,1,1,10
+	.word	400
+	.byte	0,5
+	.word	508
+	.byte	6
+	.byte	'rt_timer',0,1,236,3,8,44,7
+	.byte	'parent',0
+	.word	426
+	.byte	20,2,35,0,7
+	.byte	'row',0
+	.word	499
+	.byte	8,2,35,20,7
+	.byte	'timeout_func',0
+	.word	517
+	.byte	4,2,35,28,7
+	.byte	'parameter',0
+	.word	400
+	.byte	4,2,35,32,7
+	.byte	'init_tick',0
+	.word	279
+	.byte	4,2,35,36,7
+	.byte	'timeout_tick',0
+	.word	279
+	.byte	4,2,35,40,0,9,1,1,10
+	.word	.L56-.L19
+	.byte	0,5
+	.word	649
+	.byte	6
+	.byte	'rt_thread',0,1,213,4,8,128,1,7
+	.byte	'name',0
+	.word	315
+	.byte	8,2,35,0,7
+	.byte	'type',0
+	.word	324
+	.byte	1,2,35,8,7
+	.byte	'flags',0
+	.word	324
+	.byte	1,2,35,9,7
+	.byte	'list',0
+	.word	346
+	.byte	8,2,35,12,7
+	.byte	'tlist',0
+	.word	346
+	.byte	8,2,35,20,7
+	.byte	'sp',0
+	.word	400
+	.byte	4,2,35,28,7
+	.byte	'entry',0
+	.word	400
+	.byte	4,2,35,32,7
+	.byte	'parameter',0
+	.word	400
+	.byte	4,2,35,36,7
+	.byte	'stack_addr',0
+	.word	400
+	.byte	4,2,35,40,7
+	.byte	'stack_size',0
+	.word	279
+	.byte	4,2,35,44,7
+	.byte	'error',0
+	.word	295
+	.byte	4,2,35,48,7
+	.byte	'stat',0
+	.word	324
+	.byte	1,2,35,52,7
+	.byte	'current_priority',0
+	.word	324
+	.byte	1,2,35,53,7
+	.byte	'init_priority',0
+	.word	324
+	.byte	1,2,35,54,7
+	.byte	'number_mask',0
+	.word	279
+	.byte	4,2,35,56,7
+	.byte	'event_set',0
+	.word	279
+	.byte	4,2,35,60,7
+	.byte	'event_info',0
+	.word	324
+	.byte	1,2,35,64,7
+	.byte	'init_tick',0
+	.word	405
+	.byte	4,2,35,66,7
+	.byte	'remaining_tick',0
+	.word	405
+	.byte	4,2,35,70,7
+	.byte	'thread_timer',0
+	.word	522
+	.byte	44,2,35,76,7
+	.byte	'cleanup',0
+	.word	658
+	.byte	4,2,35,120,7
+	.byte	'user_data',0
+	.word	405
+	.byte	4,2,35,124,0
+.L56:
+	.byte	5
+	.word	663
+.L61:
+	.byte	2
+	.byte	'int',0,4,5,11
+	.byte	'rt_timer_check',0,2,104,6,1,1,1,1,12
+	.byte	'rt_thread_t',0,1,160,5,27
+	.word	1078
+	.byte	13
+	.byte	'rt_thread_self',0,2,137,1,13
+	.word	1113
+	.byte	1,1,1,1,5
+	.word	663
+	.byte	11
+	.byte	'rt_schedule',0,2,180,1,6,1,1,1,1,13
+	.byte	'rt_hw_interrupt_disable',0,3,105,11
+	.word	295
+	.byte	1,1,1,1,14
+	.byte	'rt_hw_interrupt_enable',0,3,106,6,1,1,1,1,15
+	.byte	'level',0,3,106,39
+	.word	295
+	.byte	0,12
+	.byte	'__size_t',0,4,1,1
+	.word	279
+	.byte	16,1,5
+	.word	1287
+	.byte	12
+	.byte	'__codeptr',0,4,1,1
+	.word	1289
+	.byte	12
+	.byte	'__intptr_t',0,4,1,1
+	.word	1083
+	.byte	12
+	.byte	'__uintptr_t',0,4,1,1
+	.word	279
+	.byte	12
+	.byte	'rt_int32_t',0,1,68,41
+	.word	1083
+	.byte	12
+	.byte	'rt_uint8_t',0,1,69,41
+	.word	324
+	.byte	2
+	.byte	'unsigned short int',0,2,7,12
+	.byte	'rt_uint16_t',0,1,70,41
+	.word	1389
+	.byte	12
+	.byte	'rt_uint32_t',0,1,71,41
+	.word	279
+	.byte	12
+	.byte	'rt_base_t',0,1,83,41
+	.word	295
+	.byte	12
+	.byte	'rt_ubase_t',0,1,84,41
+	.word	405
+	.byte	12
+	.byte	'rt_err_t',0,1,86,41
+	.word	295
+	.byte	12
+	.byte	'rt_tick_t',0,1,88,41
+	.word	279
+	.byte	12
+	.byte	'rt_size_t',0,1,90,41
+	.word	405
+	.byte	12
+	.byte	'rt_list_t',0,1,234,2,29
+	.word	346
+	.byte	5
+	.word	.L77-.L19
+.L77:
+	.byte	6
+	.byte	'rt_slist_node',0,1,239,2,8,4,7
+	.byte	'next',0
+	.word	1560
+	.byte	4,2,35,0,0,12
+	.byte	'rt_slist_t',0,1,243,2,30
+	.word	1565
+	.byte	12
+	.byte	'uint16_t',0,5,246,1,41
+	.word	1389
+	.byte	12
+	.byte	'uint32_t',0,5,254,1,41
+	.word	279
+	.byte	12
+	.byte	'time_t',0,6,44,25
+	.word	405
+	.byte	12
+	.byte	'fd_mask',0,7,39,17
+	.word	295
+	.byte	9,1,1,10
+	.word	1083
+	.byte	10
+	.word	400
+	.byte	0,5
+	.word	1687
+	.byte	12
+	.byte	'rt_isr_handler_t',0,3,73,16
+	.word	1701
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L20:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,1,1,11,15,73,19,0,0,4,33,0
+	.byte	47,15,0,0,5,15,0,73,19,0,0,6,19,1,3,8,58,15,59,15,57,15,11,15,0,0,7,13,0,3,8,73,19,11,15,56,9,0,0,8,59
+	.byte	0,3,8,0,0,9,21,1,54,15,39,12,0,0,10,5,0,73,19,0,0,11,46,0,3,8,58,15,59,15,57,15,54,15,39,12,63,12,60,12
+	.byte	0,0,12,22,0,3,8,58,15,59,15,57,15,73,19,0,0,13,46,0,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12
+	.byte	0,0,14,46,1,3,8,58,15,59,15,57,15,54,15,39,12,63,12,60,12,0,0,15,5,0,3,8,58,15,59,15,57,15,73,19,0,0,16
+	.byte	21,0,54,15,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L21:
+	.word	.L79-.L78
+.L78:
+	.half	3
+	.word	.L81-.L80
+.L80:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
+	.byte	'D:\\\\work\\\\Bilibili\\\\cross_platform\\\\elab\\\\3rd\\\\rtthread\\\\rtthread_libraries\\\\include',0
+	.byte	'D:\\software\\IDE\\Infineon\\AURIX-Studio-1.5.2\\plugins\\com.infineon.aurix.tools_1.5.2\\build_system\\tools\\Compilers\\Tasking_1.1r7\\ctc\\include\\',0
+	.byte	0
+	.byte	'rtdef.h',0,1,0,0
+	.byte	'rtthread.h',0,1,0,0
+	.byte	'rthw.h',0,1,0,0
+	.byte	'D:/work/Bilibili/cross_platform/elab/3rd/rtthread/rtthread_libraries/src/clock.c',0,0,0,0
+	.byte	'stdint.h',0,2,0,0
+	.byte	'time.h',0,2,0,0
+	.byte	'D:\\\\work\\\\Bilibili\\\\cross_platform\\\\elab\\\\3rd\\\\rtthread\\\\rtthread_libraries\\\\include\\libc\\libc_fdset.h',0
+	.byte	0,0,0,0
+.L81:
+.L79:
+	.sdecl	'.debug_info',debug,cluster('rt_tick_get')
+	.sect	'.debug_info'
+.L22:
+	.word	330
+	.half	3
+	.word	.L23
+	.byte	4,1
+	.byte	'D:/work/Bilibili/cross_platform/elab/3rd/rtthread/rtthread_libraries/src/clock.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'D:\\work\\Bilibili\\cross_platform\\project\\TC264D_AURIX\\Seekfree_TC264_RTThread_Opensource_Library\\Debug\\',0
+	.byte	12,1
+	.word	.L25,.L24
+	.byte	2
+	.word	.L18
+	.byte	3
+	.byte	'rt_tick_get',0,1,39,11
+	.word	.L49
+	.byte	1,1,1
+	.word	.L9,.L50,.L8
+	.byte	4
+	.word	.L9,.L50
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('rt_tick_get')
+	.sect	'.debug_abbrev'
+.L23:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('rt_tick_get')
+	.sect	'.debug_line'
+.L24:
+	.word	.L83-.L82
+.L82:
+	.half	3
+	.word	.L85-.L84
+.L84:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'D:/work/Bilibili/cross_platform/elab/3rd/rtthread/rtthread_libraries/src/clock.c',0,0,0,0,0
+.L85:
+	.byte	5,12,7,0,5,2
+	.word	.L9
+	.byte	3,41,1,5,5,9
+	.half	.L86-.L9
+	.byte	1,5,1,9
+	.half	.L2-.L86
+	.byte	3,1,1,7,9
+	.half	.L26-.L2
+	.byte	0,1,1
+.L83:
+	.sdecl	'.debug_ranges',debug,cluster('rt_tick_get')
+	.sect	'.debug_ranges'
+.L25:
+	.word	-1,.L9,0,.L26-.L9,0,0
+	.sdecl	'.debug_info',debug,cluster('rt_tick_set')
+	.sect	'.debug_info'
+.L27:
+	.word	362
+	.half	3
+	.word	.L28
+	.byte	4,1
+	.byte	'D:/work/Bilibili/cross_platform/elab/3rd/rtthread/rtthread_libraries/src/clock.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'D:\\work\\Bilibili\\cross_platform\\project\\TC264D_AURIX\\Seekfree_TC264_RTThread_Opensource_Library\\Debug\\',0
+	.byte	12,1
+	.word	.L30,.L29
+	.byte	2
+	.word	.L18
+	.byte	3
+	.byte	'rt_tick_set',0,1,49,6,1,1,1
+	.word	.L11,.L51,.L10
+	.byte	4
+	.byte	'tick',0,1,49,28
+	.word	.L49,.L52
+	.byte	5
+	.word	.L11,.L51
+	.byte	6
+	.byte	'level',0,1,51,15
+	.word	.L53,.L54
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('rt_tick_set')
+	.sect	'.debug_abbrev'
+.L28:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('rt_tick_set')
+	.sect	'.debug_line'
+.L29:
+	.word	.L88-.L87
+.L87:
+	.half	3
+	.word	.L90-.L89
+.L89:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'D:/work/Bilibili/cross_platform/elab/3rd/rtthread/rtthread_libraries/src/clock.c',0,0,0,0,0
+.L90:
+	.byte	5,6,7,0,5,2
+	.word	.L11
+	.byte	3,48,1,5,36,9
+	.half	.L66-.L11
+	.byte	3,4,1,5,5,9
+	.half	.L65-.L66
+	.byte	3,1,1,5,13,9
+	.half	.L91-.L65
+	.byte	1,5,28,9
+	.half	.L92-.L91
+	.byte	3,1,1,5,1,9
+	.half	.L67-.L92
+	.byte	3,1,1,7,9
+	.half	.L31-.L67
+	.byte	0,1,1
+.L88:
+	.sdecl	'.debug_ranges',debug,cluster('rt_tick_set')
+	.sect	'.debug_ranges'
+.L30:
+	.word	-1,.L11,0,.L31-.L11,0,0
+	.sdecl	'.debug_info',debug,cluster('rt_tick_increase')
+	.sect	'.debug_info'
+.L32:
+	.word	379
+	.half	3
+	.word	.L33
+	.byte	4,1
+	.byte	'D:/work/Bilibili/cross_platform/elab/3rd/rtthread/rtthread_libraries/src/clock.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'D:\\work\\Bilibili\\cross_platform\\project\\TC264D_AURIX\\Seekfree_TC264_RTThread_Opensource_Library\\Debug\\',0
+	.byte	12,1
+	.word	.L35,.L34
+	.byte	2
+	.word	.L18
+	.byte	3
+	.byte	'rt_tick_increase',0,1,62,6,1,1,1
+	.word	.L13,.L55,.L12
+	.byte	4
+	.word	.L13,.L55
+	.byte	5
+	.byte	'thread',0,1,64,23
+	.word	.L56,.L57
+	.byte	4
+	.word	.L58,.L3
+	.byte	5
+	.byte	'level',0,1,79,19
+	.word	.L53,.L59
+	.byte	0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('rt_tick_increase')
+	.sect	'.debug_abbrev'
+.L33:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('rt_tick_increase')
+	.sect	'.debug_line'
+.L34:
+	.word	.L94-.L93
+.L93:
+	.half	3
+	.word	.L96-.L95
+.L95:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'D:/work/Bilibili/cross_platform/elab/3rd/rtthread/rtthread_libraries/src/clock.c',0,0,0,0,0
+.L96:
+	.byte	5,8,7,0,5,2
+	.word	.L13
+	.byte	3,197,0,1,5,5,9
+	.half	.L97-.L13
+	.byte	1,5,28,9
+	.half	.L98-.L97
+	.byte	3,4,1,5,12,9
+	.half	.L69-.L98
+	.byte	1,5,14,9
+	.half	.L71-.L69
+	.byte	3,2,1,5,5,9
+	.half	.L99-.L71
+	.byte	1,5,15,9
+	.half	.L100-.L99
+	.byte	3,1,1,5,5,9
+	.half	.L101-.L100
+	.byte	1,5,40,7,9
+	.half	.L58-.L101
+	.byte	3,4,1,5,32,9
+	.half	.L102-.L58
+	.byte	1,5,40,9
+	.half	.L103-.L102
+	.byte	3,2,1,5,15,9
+	.half	.L70-.L103
+	.byte	3,1,1,5,22,9
+	.half	.L104-.L70
+	.byte	1,5,32,9
+	.half	.L105-.L104
+	.byte	3,1,1,5,20,9
+	.half	.L72-.L105
+	.byte	3,2,1,5,19,9
+	.half	.L3-.L72
+	.byte	3,4,1,5,1,9
+	.half	.L106-.L3
+	.byte	3,1,1,7,9
+	.half	.L36-.L106
+	.byte	0,1,1
+.L94:
+	.sdecl	'.debug_ranges',debug,cluster('rt_tick_increase')
+	.sect	'.debug_ranges'
+.L35:
+	.word	-1,.L13,0,.L36-.L13,0,0
+	.sdecl	'.debug_info',debug,cluster('rt_tick_from_millisecond')
+	.sect	'.debug_info'
+.L37:
+	.word	376
+	.half	3
+	.word	.L38
+	.byte	4,1
+	.byte	'D:/work/Bilibili/cross_platform/elab/3rd/rtthread/rtthread_libraries/src/clock.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'D:\\work\\Bilibili\\cross_platform\\project\\TC264D_AURIX\\Seekfree_TC264_RTThread_Opensource_Library\\Debug\\',0
+	.byte	12,1
+	.word	.L40,.L39
+	.byte	2
+	.word	.L18
+	.byte	3
+	.byte	'rt_tick_from_millisecond',0,1,104,11
+	.word	.L49
+	.byte	1,1,1
+	.word	.L15,.L60,.L14
+	.byte	4
+	.byte	'ms',0,1,104,47
+	.word	.L61,.L62
+	.byte	5
+	.word	.L15,.L60
+	.byte	6
+	.byte	'tick',0,1,106,15
+	.word	.L49,.L63
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('rt_tick_from_millisecond')
+	.sect	'.debug_abbrev'
+.L38:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('rt_tick_from_millisecond')
+	.sect	'.debug_line'
+.L39:
+	.word	.L108-.L107
+.L107:
+	.half	3
+	.word	.L110-.L109
+.L109:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'D:/work/Bilibili/cross_platform/elab/3rd/rtthread/rtthread_libraries/src/clock.c',0,0,0,0,0
+.L110:
+	.byte	5,5,7,0,5,2
+	.word	.L15
+	.byte	3,235,0,1,5,14,7,9
+	.half	.L111-.L15
+	.byte	3,2,1,5,45,9
+	.half	.L74-.L111
+	.byte	1,5,43,9
+	.half	.L4-.L74
+	.byte	3,4,1,5,41,9
+	.half	.L112-.L4
+	.byte	1,5,16,9
+	.half	.L113-.L112
+	.byte	1,5,35,9
+	.half	.L75-.L113
+	.byte	1,5,45,9
+	.half	.L114-.L75
+	.byte	3,1,1,5,43,9
+	.half	.L115-.L114
+	.byte	1,5,18,9
+	.half	.L116-.L115
+	.byte	1,5,53,9
+	.half	.L117-.L116
+	.byte	1,5,51,9
+	.half	.L118-.L117
+	.byte	1,5,60,9
+	.half	.L119-.L118
+	.byte	1,5,58,9
+	.half	.L120-.L119
+	.byte	1,5,14,9
+	.half	.L121-.L120
+	.byte	1,5,5,9
+	.half	.L5-.L121
+	.byte	3,4,1,5,1,9
+	.half	.L6-.L5
+	.byte	3,1,1,7,9
+	.half	.L41-.L6
+	.byte	0,1,1
+.L108:
+	.sdecl	'.debug_ranges',debug,cluster('rt_tick_from_millisecond')
+	.sect	'.debug_ranges'
+.L40:
+	.word	-1,.L15,0,.L41-.L15,0,0
+	.sdecl	'.debug_info',debug,cluster('rt_tick_get_millisecond')
+	.sect	'.debug_info'
+.L42:
+	.word	343
+	.half	3
+	.word	.L43
+	.byte	4,1
+	.byte	'D:/work/Bilibili/cross_platform/elab/3rd/rtthread/rtthread_libraries/src/clock.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'D:\\work\\Bilibili\\cross_platform\\project\\TC264D_AURIX\\Seekfree_TC264_RTThread_Opensource_Library\\Debug\\',0
+	.byte	12,1
+	.word	.L45,.L44
+	.byte	2
+	.word	.L18
+	.byte	3
+	.byte	'rt_tick_get_millisecond',0,1,128,1,19
+	.word	.L49
+	.byte	1,1,1
+	.word	.L17,.L64,.L16
+	.byte	4
+	.word	.L17,.L64
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('rt_tick_get_millisecond')
+	.sect	'.debug_abbrev'
+.L43:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('rt_tick_get_millisecond')
+	.sect	'.debug_line'
+.L44:
+	.word	.L123-.L122
+.L122:
+	.half	3
+	.word	.L125-.L124
+.L124:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'D:/work/Bilibili/cross_platform/elab/3rd/rtthread/rtthread_libraries/src/clock.c',0,0,0,0,0
+.L125:
+	.byte	5,23,7,0,5,2
+	.word	.L17
+	.byte	3,130,1,1,5,26,9
+	.half	.L126-.L17
+	.byte	1,5,5,9
+	.half	.L127-.L126
+	.byte	1,5,1,9
+	.half	.L7-.L127
+	.byte	3,6,1,7,9
+	.half	.L46-.L7
+	.byte	0,1,1
+.L123:
+	.sdecl	'.debug_ranges',debug,cluster('rt_tick_get_millisecond')
+	.sect	'.debug_ranges'
+.L45:
+	.word	-1,.L17,0,.L46-.L17,0,0
+	.sdecl	'.debug_info',debug,cluster('rt_tick')
+	.sect	'.debug_info'
+.L47:
+	.word	299
+	.half	3
+	.word	.L48
+	.byte	4,1
+	.byte	'D:/work/Bilibili/cross_platform/elab/3rd/rtthread/rtthread_libraries/src/clock.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'D:\\work\\Bilibili\\cross_platform\\project\\TC264D_AURIX\\Seekfree_TC264_RTThread_Opensource_Library\\Debug\\',0
+	.byte	12,1,2
+	.word	.L18
+	.byte	3
+	.byte	'rt_tick',0,4,25,18
+	.word	.L49
+	.byte	5,3
+	.word	rt_tick
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('rt_tick')
+	.sect	'.debug_abbrev'
+.L48:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_loc',debug,cluster('rt_tick_from_millisecond')
+	.sect	'.debug_loc'
+.L62:
+	.word	-1,.L15,0,.L60-.L15
+	.half	1
+	.byte	84
+	.word	0,0
+.L14:
+	.word	-1,.L15,0,.L60-.L15
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L63:
+	.word	-1,.L15,.L74-.L15,.L4-.L15
+	.half	1
+	.byte	82
+	.word	.L75-.L15,.L60-.L15
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('rt_tick_get')
+	.sect	'.debug_loc'
+.L8:
+	.word	-1,.L9,0,.L50-.L9
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('rt_tick_get_millisecond')
+	.sect	'.debug_loc'
+.L16:
+	.word	-1,.L17,0,.L64-.L17
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('rt_tick_increase')
+	.sect	'.debug_loc'
+.L59:
+	.word	-1,.L13,.L70-.L13,.L72-.L13
+	.half	1
+	.byte	82
+	.word	.L73-.L13,.L72-.L13
+	.half	1
+	.byte	84
+	.word	0,0
+.L12:
+	.word	-1,.L13,0,.L55-.L13
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L57:
+	.word	-1,.L13,.L69-.L13,.L70-.L13
+	.half	1
+	.byte	98
+	.word	.L71-.L13,.L55-.L13
+	.half	1
+	.byte	111
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('rt_tick_set')
+	.sect	'.debug_loc'
+.L54:
+	.word	-1,.L11,.L65-.L11,.L67-.L11
+	.half	1
+	.byte	82
+	.word	.L68-.L11,.L67-.L11
+	.half	1
+	.byte	84
+	.word	0,0
+.L10:
+	.word	-1,.L11,0,.L51-.L11
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L52:
+	.word	-1,.L11,0,.L65-.L11
+	.half	1
+	.byte	84
+	.word	.L66-.L11,.L51-.L11
+	.half	1
+	.byte	95
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L128:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,30,8,29,8,28,8,16,8,17,8,24,8,25,8,31,8,32,8,33,8,34,8,35,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('rt_tick_get')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L128,.L9,.L50-.L9
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('rt_tick_set')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L128,.L11,.L51-.L11
+	.sdecl	'.debug_frame',debug,cluster('rt_tick_increase')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L128,.L13,.L55-.L13
+	.sdecl	'.debug_frame',debug,cluster('rt_tick_from_millisecond')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L128,.L15,.L60-.L15
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('rt_tick_get_millisecond')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L128,.L17,.L64-.L17
+	; Module end
