@@ -20,7 +20,10 @@
 
 #include "headfile.h"
 #include "cmsis_os.h"
-//#include "../../../../elab/os/cmsis_os.h"
+#include "elab_log.h"
+
+
+
 #pragma section all "cpu0_dsram"
 //将本语句与#pragma section all restore语句之间的全局变量都放在CPU0的RAM中
 #include "elab_export.h"
@@ -41,7 +44,7 @@
 //函数声明
 
 
-
+ELAB_TAG("main");
 
 void init_test()
 {
@@ -52,6 +55,40 @@ void init_test()
 
 ELAB_INIT_EXPORT(init_test,EXPORT_LEVEL_BSP);
 
+
+void export_zero(void)
+{
+
+elog_debug("export_zero");
+}
+ELAB_INIT_EXPORT(export_zero,EXPORT_DRVIVER);
+
+static const osThreadAttr_t thread_test =
+{
+    .name = "thread_test",
+    .attr_bits = osThreadDetached,
+    .priority = osPriorityNormal,
+    .stack_size = 2048,
+};
+
+
+static void _entry_start_poll(void *para)
+{
+
+    elog_debug("task_create");    /* Start polling function in metal eLab. */
+    while (1)
+    {
+        //elog_debug("task_running");
+        gpio_toggle(P20_8);
+        gpio_toggle(P20_9);
+        gpio_toggle(P21_4);
+        gpio_toggle(P21_5);
+        osDelay(100);
+
+
+    }
+}
+
 int main(void)
 {
 
@@ -60,7 +97,7 @@ int main(void)
     IfxCpu_emitEvent(&g_cpuSyncEvent);
     IfxCpu_waitEvent(&g_cpuSyncEvent, 0xFFFF);
 
-
+    osThreadNew(_entry_start_poll, NULL, &thread_test);
     //初始化LED引脚
     gpio_init(P20_8, GPO, 1, PUSHPULL);
     gpio_init(P20_9, GPO, 1, PUSHPULL);
@@ -68,14 +105,14 @@ int main(void)
     gpio_init(P21_5, GPO, 1, PUSHPULL);
 
 
+    elab_run();
+
 
     while(1)
     {
+        //elog_debug("test_led_loop");
         //翻转LED引脚
-        gpio_toggle(P20_8);
-        gpio_toggle(P20_9);
-        gpio_toggle(P21_4);
-        gpio_toggle(P21_5);
+
         osDelay(1000);
         //rt_thread_mdelay(1000);
     }
