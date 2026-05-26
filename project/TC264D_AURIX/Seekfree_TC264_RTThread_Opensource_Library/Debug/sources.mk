@@ -25,6 +25,7 @@ C_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 USER \
+device \
 driver/Libraries/infineon_libraries/Infra/Platform/Tricore/Compilers \
 driver/Libraries/infineon_libraries/Service/CpuGeneric/If \
 driver/Libraries/infineon_libraries/Service/CpuGeneric/StdIf \
@@ -115,7 +116,12 @@ driver/Libraries/seekfree_libraries/board \
 driver/Libraries/seekfree_libraries/common \
 driver/Libraries/seekfree_libraries \
 driver/Libraries/seekfree_peripheral \
+driver \
 elab/3rd/rtt/rtthread_libraries/src \
 elab/common \
+elab/edf \
+elab/edf/normal \
+elab/edf/user \
 elab/os/mcu_rtt \
+export \
 

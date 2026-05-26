@@ -8,7 +8,11 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include export/subdir.mk
 -include elab/os/mcu_rtt/subdir.mk
+-include elab/edf/user/subdir.mk
+-include elab/edf/normal/subdir.mk
+-include elab/edf/subdir.mk
 -include elab/common/subdir.mk
 -include elab/3rd/rtt/rtthread_libraries/src/subdir.mk
 -include driver/Libraries/seekfree_peripheral/subdir.mk
@@ -101,6 +105,8 @@ RM := rm -rf
 -include driver/Libraries/infineon_libraries/Service/CpuGeneric/StdIf/subdir.mk
 -include driver/Libraries/infineon_libraries/Service/CpuGeneric/If/subdir.mk
 -include driver/Libraries/infineon_libraries/Infra/Platform/Tricore/Compilers/subdir.mk
+-include driver/subdir.mk
+-include device/subdir.mk
 -include USER/subdir.mk
 -include subdir.mk
 -include objects.mk

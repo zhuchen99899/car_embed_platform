@@ -59,9 +59,24 @@
 			<location>D:/work/Bilibili/cross_platform/elab/common</location>
 		</link>
 		<link>
+			<name>elab/edf</name>
+			<type>2</type>
+			<location>D:/work/Bilibili/cross_platform/elab/edf</location>
+		</link>
+		<link>
 			<name>elab/os</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>export/device_led_export.c</name>
+			<type>1</type>
+			<location>D:/work/Bilibili/cross_platform/project/TC264D_AURIX/Seekfree_TC264_RTThread_Opensource_Library/export/device_led_export.c</location>
+		</link>
+		<link>
+			<name>export/driver_pin_export.c</name>
+			<type>1</type>
+			<location>D:/work/Bilibili/cross_platform/project/TC264D_AURIX/Seekfree_TC264_RTThread_Opensource_Library/export/driver_pin_export.c</location>
 		</link>
 		<link>
 			<name>elab/3rd/rtt</name>

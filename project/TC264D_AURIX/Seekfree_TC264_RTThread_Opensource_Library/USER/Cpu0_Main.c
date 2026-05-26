@@ -78,11 +78,7 @@ static void _entry_start_poll(void *para)
     elog_debug("task_create");    /* Start polling function in metal eLab. */
     while (1)
     {
-        //elog_debug("task_running");
-        gpio_toggle(P20_8);
-        gpio_toggle(P20_9);
-        gpio_toggle(P21_4);
-        gpio_toggle(P21_5);
+
         osDelay(100);
 
 
@@ -98,11 +94,7 @@ int main(void)
     IfxCpu_waitEvent(&g_cpuSyncEvent, 0xFFFF);
 
     osThreadNew(_entry_start_poll, NULL, &thread_test);
-    //³õÊ¼»¯LEDÒý½Å
-    gpio_init(P20_8, GPO, 1, PUSHPULL);
-    gpio_init(P20_9, GPO, 1, PUSHPULL);
-    gpio_init(P21_4, GPO, 1, PUSHPULL);
-    gpio_init(P21_5, GPO, 1, PUSHPULL);
+
 
 
     elab_run();
