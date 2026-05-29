@@ -166,8 +166,9 @@ int32_t elab_i2c_xfer_msgs(elab_device_t *me,
     for (uint32_t i = 0; i < num; i ++)
     {
         ret = i2c->bus->ops->xfer(i2c->bus, i2c->config.addr, msgs[i]);
-        if (ret != ELAB_OK)
+        if (ret != (int32_t)msgs[i].len)
         {
+            ret = ELAB_ERROR;
             goto exit;
         }
 
@@ -178,12 +179,15 @@ int32_t elab_i2c_xfer_msgs(elab_device_t *me,
             goto exit;
         }
 
-        timeout -= (osKernelGetTickCount() - time_start);
-        if (timeout == 0)
+        uint32_t time_now = osKernelGetTickCount();
+        uint32_t time_elapsed = time_now - time_start;
+        if (time_elapsed >= timeout)
         {
             ret = ELAB_ERR_TIMEOUT;
             goto exit;
         }
+        timeout -= time_elapsed;
+        time_start = time_now;
     }
 
     ret = num;

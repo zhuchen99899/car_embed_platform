@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_MD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\freeRTOS\port\ARM_CM3;..\Library\CMSIS;..\Library\FWlib\inc;..\User;..\User\Key;..\User\led;..\User\usart;..\..\..\..\elab\3rd\FreeRTOS\include;..\config;..\..\..\..\elab\os\mcu_os;..\..\..\..\elab\os;..\..\..\..\elab\common;..\Bsp;..\..\..\..\elab\edf\normal;..\..\..\..\elab\edf;..\Driver;..\export;..\Device;..\..\..\..\elab\edf\user</IncludePath>
+              <IncludePath>..\freeRTOS\port\ARM_CM3;..\Library\CMSIS;..\Library\FWlib\inc;..\User;..\User\Key;..\User\led;..\User\usart;..\User\OLED;..\..\..\..\elab\3rd\FreeRTOS\include;..\config;..\..\..\..\elab\os\mcu_os;..\..\..\..\elab\os;..\..\..\..\elab\common;..\Bsp;..\..\..\..\elab\edf\normal;..\..\..\..\elab\edf;..\Driver;..\export;..\Device;..\..\..\..\elab\edf\user;..\User\OLED</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -553,6 +553,16 @@
               <FileType>1</FileType>
               <FilePath>..\User\Key\bsp_key.c</FilePath>
             </File>
+            <File>
+              <FileName>oled096.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\OLED\oled096.c</FilePath>
+            </File>
+            <File>
+              <FileName>OLED_Data.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\OLED\OLED_Data.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -583,6 +593,11 @@
               <FileType>1</FileType>
               <FilePath>..\Driver\drv_util.c</FilePath>
             </File>
+            <File>
+              <FileName>driver_bus_iic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Driver\driver_bus_iic.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -607,6 +622,11 @@
               <FileName>pin_export.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\export\pin_export.c</FilePath>
+            </File>
+            <File>
+              <FileName>bus_export.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\export\bus_export.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -677,6 +697,11 @@
               <FileName>elab_pin.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\elab\edf\normal\elab_pin.c</FilePath>
+            </File>
+            <File>
+              <FileName>elab_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\elab\edf\normal\elab_i2c.c</FilePath>
             </File>
             <File>
               <FileName>elab_led.c</FileName>
