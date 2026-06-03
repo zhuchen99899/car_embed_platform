@@ -25,7 +25,7 @@ extern "C"{
  /* ==================== [Typedefs] ========================================== */
  
  /* ==================== [Global Prototypes] ================================== */
-void elab_led_register(elab_led_t *const me, const char *name,
+void elab_led_pin_register(elab_led_t *const me, const char *name,
                       const char *pin_name, bool status_led_on);
  /* ==================== [Macros] ============================================ */
  

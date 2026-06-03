@@ -554,9 +554,9 @@
               <FilePath>..\User\Key\bsp_key.c</FilePath>
             </File>
             <File>
-              <FileName>oled096.c</FileName>
+              <FileName>ssd1306.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\User\OLED\oled096.c</FilePath>
+              <FilePath>..\User\OLED\ssd1306.c</FilePath>
             </File>
             <File>
               <FileName>OLED_Data.c</FileName>

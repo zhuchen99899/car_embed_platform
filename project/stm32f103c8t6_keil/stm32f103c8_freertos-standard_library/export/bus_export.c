@@ -11,10 +11,12 @@
 
 
  /* ==================== [Includes] ========================================== */
+ #include "elab_i2c.h"
  #include "../Driver/driver_bus.h"
  #include "elab_export.h"
  /* ==================== [Defines] ========================================== */
- 
+
+static elab_i2c_bus_t soft_i2c_bus;
  /* ==================== [Macros] ============================================ */
  
  /* ==================== [Typedefs] ========================================== */
@@ -23,7 +25,7 @@
 void bus_export(void)
 {
     
-driver_i2c_bus_register("i2c0");
+driver_i2c_bus_register(&soft_i2c_bus, "i2c0");
 
 }
 ELAB_INIT_EXPORT(bus_export, EXPORT_DRVIVER);

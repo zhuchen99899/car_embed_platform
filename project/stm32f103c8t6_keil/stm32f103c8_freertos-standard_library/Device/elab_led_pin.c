@@ -1,5 +1,5 @@
 /**
- * @file elab_led_adapter.c
+ * @file elab_led_pin.c
  * @author ZC (387646983@qq.com)
  * @brief 
  * @version 0.1
@@ -25,7 +25,7 @@ static const elab_led_backend_ops_t _pin_backend_ops =
 };
 
 /* public function ---------------------------------------------------------- */
-void elab_led_register(elab_led_t *const me, const char *name,
+void elab_led_pin_register(elab_led_t *const me, const char *name,
                         const char *pin_name, bool status_led_on)
 {
     if (pin_name == NULL)

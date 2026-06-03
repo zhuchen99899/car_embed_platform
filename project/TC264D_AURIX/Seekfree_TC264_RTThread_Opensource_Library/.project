@@ -49,6 +49,16 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>USER/OLED_Data.c</name>
+			<type>1</type>
+			<location>D:/work/Bilibili/cross_platform/project/TC264D_AURIX/Seekfree_TC264_RTThread_Opensource_Library/USER/OLED_Data.c</location>
+		</link>
+		<link>
+			<name>driver/driver_bus_iic.c</name>
+			<type>1</type>
+			<location>D:/work/Bilibili/cross_platform/project/TC264D_AURIX/Seekfree_TC264_RTThread_Opensource_Library/driver/driver_bus_iic.c</location>
+		</link>
+		<link>
 			<name>elab/3rd</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -69,9 +79,14 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>export/device_led_export.c</name>
+			<name>export/bus_export.c</name>
 			<type>1</type>
-			<location>D:/work/Bilibili/cross_platform/project/TC264D_AURIX/Seekfree_TC264_RTThread_Opensource_Library/export/device_led_export.c</location>
+			<location>D:/work/Bilibili/cross_platform/project/TC264D_AURIX/Seekfree_TC264_RTThread_Opensource_Library/export/bus_export.c</location>
+		</link>
+		<link>
+			<name>export/device_export.c</name>
+			<type>1</type>
+			<location>D:/work/Bilibili/cross_platform/project/TC264D_AURIX/Seekfree_TC264_RTThread_Opensource_Library/export/device_export.c</location>
 		</link>
 		<link>
 			<name>export/driver_pin_export.c</name>

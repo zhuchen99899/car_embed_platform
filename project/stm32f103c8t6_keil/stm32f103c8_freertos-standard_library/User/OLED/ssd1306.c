@@ -1,5 +1,5 @@
 /**
- * @file oled096.c
+ * @file ssd1306.c
  * @author ZC (387646983@qq.com)
  * @brief SSD1306 0.96 inch OLED device.
  * @version 0.1
@@ -11,69 +11,69 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
-#include "oled096.h"
+#include "ssd1306.h"
 #include "elab_assert.h"
 #include "elab_export.h"
 #include "elab_i2c.h"
 #include "elab_log.h"
 
 /* ==================== [Defines] =========================================== */
-ELAB_TAG("OLED096");
+ELAB_TAG("SSD1306");
 
-#define OLED_I2C_DEVICE_NAME        "oled"
-#define OLED_I2C_TIMEOUT_MS         100
-#define OLED_CMD_CONTROL_BYTE       0x00
-#define OLED_DATA_CONTROL_BYTE      0x40
-#define OLED_WIDTH                  128
-#define OLED_HEIGHT                 64
-#define OLED_PAGE_COUNT             8
-#define OLED_PRINTF_BUF_SIZE        30
-#define OLED_PI                     3.1415926f
-#define OLED_DISPLAY_DEVICE_NAME    "display0"
+#define SSD1306_I2C_DEVICE_NAME        "oled"
+#define SSD1306_I2C_TIMEOUT_MS         100
+#define SSD1306_CMD_CONTROL_BYTE       0x00
+#define SSD1306_DATA_CONTROL_BYTE      0x40
+#define SSD1306_WIDTH                  128
+#define SSD1306_HEIGHT                 64
+#define SSD1306_PAGE_COUNT             8
+#define SSD1306_PRINTF_BUF_SIZE        30
+#define SSD1306_PI                     3.1415926f
+#define SSD1306_DISPLAY_DEVICE_NAME    "display0"
 
 /* ==================== [Static Prototypes] ================================= */
-static elab_err_t OLED_WriteCommand(uint8_t command);
-static elab_err_t OLED_WriteData(const uint8_t *data, uint16_t size);
-static void OLED_SetCursor(uint8_t page, uint8_t column);
-static uint32_t OLED_Pow(uint32_t x, uint32_t y);
-static uint8_t OLED_pnpoly(uint8_t nvert, int16_t *vertx, int16_t *verty,
+static elab_err_t SSD1306_WriteCommand(uint8_t command);
+static elab_err_t SSD1306_WriteData(const uint8_t *data, uint16_t size);
+static void SSD1306_SetCursor(uint8_t page, uint8_t column);
+static uint32_t SSD1306_Pow(uint32_t x, uint32_t y);
+static uint8_t SSD1306_pnpoly(uint8_t nvert, int16_t *vertx, int16_t *verty,
                             int16_t testx, int16_t testy);
-static uint8_t OLED_IsInAngle(int16_t x, int16_t y,
+static uint8_t SSD1306_IsInAngle(int16_t x, int16_t y,
                                 int16_t start_angle, int16_t end_angle);
 
 
 /* ==================== [Static Variables] ================================== */
-static uint8_t OLED_DisplayBuf[OLED_PAGE_COUNT][OLED_WIDTH];
+static uint8_t SSD1306_DisplayBuf[SSD1306_PAGE_COUNT][SSD1306_WIDTH];
 static elab_device_t *oled_device = NULL;
 
 
 /* ==================== [Static Functions] ================================== */
-static elab_err_t OLED_WriteCommand(uint8_t command)
+static elab_err_t SSD1306_WriteCommand(uint8_t command)
 {
     return elab_i2c_write_memory(oled_device,
-                                    OLED_CMD_CONTROL_BYTE,
+                                    SSD1306_CMD_CONTROL_BYTE,
                                     &command,
                                     1,
-                                    OLED_I2C_TIMEOUT_MS);
+                                    SSD1306_I2C_TIMEOUT_MS);
 }
 
-static elab_err_t OLED_WriteData(const uint8_t *data, uint16_t size)
+static elab_err_t SSD1306_WriteData(const uint8_t *data, uint16_t size)
 {
     return elab_i2c_write_memory(oled_device,
-                                    OLED_DATA_CONTROL_BYTE,
+                                    SSD1306_DATA_CONTROL_BYTE,
                                     (uint8_t *)data,
                                     size,
-                                    OLED_I2C_TIMEOUT_MS);
+                                    SSD1306_I2C_TIMEOUT_MS);
 }
 
-static void OLED_SetCursor(uint8_t page, uint8_t column)
+static void SSD1306_SetCursor(uint8_t page, uint8_t column)
 {
-    OLED_WriteCommand((uint8_t)(0xB0 | page));
-    OLED_WriteCommand((uint8_t)(0x10 | ((column & 0xF0) >> 4)));
-    OLED_WriteCommand((uint8_t)(0x00 | (column & 0x0F)));
+    SSD1306_WriteCommand((uint8_t)(0xB0 | page));
+    SSD1306_WriteCommand((uint8_t)(0x10 | ((column & 0xF0) >> 4)));
+    SSD1306_WriteCommand((uint8_t)(0x00 | (column & 0x0F)));
 }
 
-static uint32_t OLED_Pow(uint32_t x, uint32_t y)
+static uint32_t SSD1306_Pow(uint32_t x, uint32_t y)
 {
     uint32_t result = 1;
 
@@ -85,7 +85,7 @@ static uint32_t OLED_Pow(uint32_t x, uint32_t y)
     return result;
 }
 
-static uint8_t OLED_pnpoly(uint8_t nvert, int16_t *vertx, int16_t *verty,
+static uint8_t SSD1306_pnpoly(uint8_t nvert, int16_t *vertx, int16_t *verty,
                             int16_t testx, int16_t testy)
 {
     int16_t i;
@@ -105,10 +105,10 @@ static uint8_t OLED_pnpoly(uint8_t nvert, int16_t *vertx, int16_t *verty,
     return c;
 }
 
-static uint8_t OLED_IsInAngle(int16_t x, int16_t y,
+static uint8_t SSD1306_IsInAngle(int16_t x, int16_t y,
                                 int16_t start_angle, int16_t end_angle)
 {
-    int16_t point_angle = (int16_t)(atan2((double)y, (double)x) / OLED_PI * 180.0);
+    int16_t point_angle = (int16_t)(atan2((double)y, (double)x) / SSD1306_PI * 180.0);
 
     if (start_angle < end_angle)
     {
@@ -130,18 +130,18 @@ static uint8_t OLED_IsInAngle(int16_t x, int16_t y,
 
 
 /* ==================== [Public Functions] ================================== */
-void OLED_Update(void)
+void SSD1306_Update(void)
 {
     uint8_t page;
 
-    for (page = 0; page < OLED_PAGE_COUNT; page++)
+    for (page = 0; page < SSD1306_PAGE_COUNT; page++)
     {
-        OLED_SetCursor(page, 0);
-        OLED_WriteData(OLED_DisplayBuf[page], OLED_WIDTH);
+        SSD1306_SetCursor(page, 0);
+        SSD1306_WriteData(SSD1306_DisplayBuf[page], SSD1306_WIDTH);
     }
 }
 
-void OLED_UpdateArea(uint8_t x, uint8_t y, uint8_t width, uint8_t height)
+void SSD1306_UpdateArea(uint8_t x, uint8_t y, uint8_t width, uint8_t height)
 {
     uint8_t page;
 
@@ -149,28 +149,28 @@ void OLED_UpdateArea(uint8_t x, uint8_t y, uint8_t width, uint8_t height)
     {
         return;
     }
-    if (x + width > OLED_WIDTH)
+    if (x + width > SSD1306_WIDTH)
     {
-        width = OLED_WIDTH - x;
+        width = SSD1306_WIDTH - x;
     }
-    if (y + height > OLED_HEIGHT)
+    if (y + height > SSD1306_HEIGHT)
     {
-        height = OLED_HEIGHT - y;
+        height = SSD1306_HEIGHT - y;
     }
 
     for (page = y / 8; page < (y + height - 1) / 8 + 1; page++)
     {
-        OLED_SetCursor(page, x);
-        OLED_WriteData(&OLED_DisplayBuf[page][x], width);
+        SSD1306_SetCursor(page, x);
+        SSD1306_WriteData(&SSD1306_DisplayBuf[page][x], width);
     }
 }
 
-void OLED_Clear(void)
+void SSD1306_Clear(void)
 {
-    memset(OLED_DisplayBuf, 0x00, sizeof(OLED_DisplayBuf));
+    memset(SSD1306_DisplayBuf, 0x00, sizeof(SSD1306_DisplayBuf));
 }
 
-void OLED_ClearArea(uint8_t x, uint8_t y, uint8_t width, uint8_t height)
+void SSD1306_ClearArea(uint8_t x, uint8_t y, uint8_t width, uint8_t height)
 {
     uint8_t i;
     uint8_t j;
@@ -179,39 +179,39 @@ void OLED_ClearArea(uint8_t x, uint8_t y, uint8_t width, uint8_t height)
     {
         return;
     }
-    if (x + width > OLED_WIDTH)
+    if (x + width > SSD1306_WIDTH)
     {
-        width = OLED_WIDTH - x;
+        width = SSD1306_WIDTH - x;
     }
-    if (y + height > OLED_HEIGHT)
+    if (y + height > SSD1306_HEIGHT)
     {
-        height = OLED_HEIGHT - y;
+        height = SSD1306_HEIGHT - y;
     }
 
     for (j = y; j < y + height; j++)
     {
         for (i = x; i < x + width; i++)
         {
-            OLED_DisplayBuf[j / 8][i] &= (uint8_t)~(0x01 << (j % 8));
+            SSD1306_DisplayBuf[j / 8][i] &= (uint8_t)~(0x01 << (j % 8));
         }
     }
 }
 
-void OLED_Reverse(void)
+void SSD1306_Reverse(void)
 {
     uint8_t i;
     uint8_t page;
 
-    for (page = 0; page < OLED_PAGE_COUNT; page++)
+    for (page = 0; page < SSD1306_PAGE_COUNT; page++)
     {
-        for (i = 0; i < OLED_WIDTH; i++)
+        for (i = 0; i < SSD1306_WIDTH; i++)
         {
-            OLED_DisplayBuf[page][i] ^= 0xFF;
+            SSD1306_DisplayBuf[page][i] ^= 0xFF;
         }
     }
 }
 
-void OLED_ReverseArea(uint8_t x, uint8_t y, uint8_t width, uint8_t height)
+void SSD1306_ReverseArea(uint8_t x, uint8_t y, uint8_t width, uint8_t height)
 {
     uint8_t i;
     uint8_t j;
@@ -220,66 +220,66 @@ void OLED_ReverseArea(uint8_t x, uint8_t y, uint8_t width, uint8_t height)
     {
         return;
     }
-    if (x + width > OLED_WIDTH)
+    if (x + width > SSD1306_WIDTH)
     {
-        width = OLED_WIDTH - x;
+        width = SSD1306_WIDTH - x;
     }
-    if (y + height > OLED_HEIGHT)
+    if (y + height > SSD1306_HEIGHT)
     {
-        height = OLED_HEIGHT - y;
+        height = SSD1306_HEIGHT - y;
     }
 
     for (j = y; j < y + height; j++)
     {
         for (i = x; i < x + width; i++)
         {
-            OLED_DisplayBuf[j / 8][i] ^= (uint8_t)(0x01 << (j % 8));
+            SSD1306_DisplayBuf[j / 8][i] ^= (uint8_t)(0x01 << (j % 8));
         }
     }
 }
 
-void OLED_ShowChar(uint8_t x, uint8_t y, char ch, uint8_t font_size)
+void SSD1306_ShowChar(uint8_t x, uint8_t y, char ch, uint8_t font_size)
 {
     if (ch < ' ' || ch > '~')
     {
         ch = '?';
     }
 
-    if (font_size == OLED_8X16)
+    if (font_size == SSD1306_8X16)
     {
-        OLED_ShowImage(x, y, 8, 16, OLED_F8x16[ch - ' ']);
+        SSD1306_ShowImage(x, y, 8, 16, &OLED_F8x16[(ch - ' ') * 16U]);
     }
-    else if (font_size == OLED_6X8)
+    else if (font_size == SSD1306_6X8)
     {
-        OLED_ShowImage(x, y, 6, 8, OLED_F6x8[ch - ' ']);
+        SSD1306_ShowImage(x, y, 6, 8, &OLED_F6x8[(ch - ' ') * 6U]);
     }
 }
 
-void OLED_ShowString(uint8_t x, uint8_t y, const char *string, uint8_t font_size)
+void SSD1306_ShowString(uint8_t x, uint8_t y, const char *string, uint8_t font_size)
 {
     uint8_t i;
 
     for (i = 0; string[i] != '\0'; i++)
     {
-        OLED_ShowChar((uint8_t)(x + i * font_size), y, string[i], font_size);
+        SSD1306_ShowChar((uint8_t)(x + i * font_size), y, string[i], font_size);
     }
 }
 
-void OLED_ShowNum(uint8_t x, uint8_t y, uint32_t number,
+void SSD1306_ShowNum(uint8_t x, uint8_t y, uint32_t number,
                     uint8_t length, uint8_t font_size)
 {
     uint8_t i;
 
     for (i = 0; i < length; i++)
     {
-        OLED_ShowChar((uint8_t)(x + i * font_size),
+        SSD1306_ShowChar((uint8_t)(x + i * font_size),
                         y,
-                        (char)(number / OLED_Pow(10, length - i - 1) % 10 + '0'),
+                        (char)(number / SSD1306_Pow(10, length - i - 1) % 10 + '0'),
                         font_size);
     }
 }
 
-void OLED_ShowSignedNum(uint8_t x, uint8_t y, int32_t number,
+void SSD1306_ShowSignedNum(uint8_t x, uint8_t y, int32_t number,
                         uint8_t length, uint8_t font_size)
 {
     uint8_t i;
@@ -287,25 +287,25 @@ void OLED_ShowSignedNum(uint8_t x, uint8_t y, int32_t number,
 
     if (number >= 0)
     {
-        OLED_ShowChar(x, y, '+', font_size);
+        SSD1306_ShowChar(x, y, '+', font_size);
         number_abs = (uint32_t)number;
     }
     else
     {
-        OLED_ShowChar(x, y, '-', font_size);
+        SSD1306_ShowChar(x, y, '-', font_size);
         number_abs = (uint32_t)(-number);
     }
 
     for (i = 0; i < length; i++)
     {
-        OLED_ShowChar((uint8_t)(x + (i + 1) * font_size),
+        SSD1306_ShowChar((uint8_t)(x + (i + 1) * font_size),
                         y,
-                        (char)(number_abs / OLED_Pow(10, length - i - 1) % 10 + '0'),
+                        (char)(number_abs / SSD1306_Pow(10, length - i - 1) % 10 + '0'),
                         font_size);
     }
 }
 
-void OLED_ShowHexNum(uint8_t x, uint8_t y, uint32_t number,
+void SSD1306_ShowHexNum(uint8_t x, uint8_t y, uint32_t number,
                     uint8_t length, uint8_t font_size)
 {
     uint8_t i;
@@ -313,17 +313,17 @@ void OLED_ShowHexNum(uint8_t x, uint8_t y, uint32_t number,
 
     for (i = 0; i < length; i++)
     {
-        single_number = (uint8_t)(number / OLED_Pow(16, length - i - 1) % 16);
+        single_number = (uint8_t)(number / SSD1306_Pow(16, length - i - 1) % 16);
         if (single_number < 10)
         {
-            OLED_ShowChar((uint8_t)(x + i * font_size),
+            SSD1306_ShowChar((uint8_t)(x + i * font_size),
                             y,
                             (char)(single_number + '0'),
                             font_size);
         }
         else
         {
-            OLED_ShowChar((uint8_t)(x + i * font_size),
+            SSD1306_ShowChar((uint8_t)(x + i * font_size),
                             y,
                             (char)(single_number - 10 + 'A'),
                             font_size);
@@ -331,21 +331,21 @@ void OLED_ShowHexNum(uint8_t x, uint8_t y, uint32_t number,
     }
 }
 
-void OLED_ShowBinNum(uint8_t x, uint8_t y, uint32_t number,
+void SSD1306_ShowBinNum(uint8_t x, uint8_t y, uint32_t number,
                     uint8_t length, uint8_t font_size)
 {
     uint8_t i;
 
     for (i = 0; i < length; i++)
     {
-        OLED_ShowChar((uint8_t)(x + i * font_size),
+        SSD1306_ShowChar((uint8_t)(x + i * font_size),
                         y,
-                        (char)(number / OLED_Pow(2, length - i - 1) % 2 + '0'),
+                        (char)(number / SSD1306_Pow(2, length - i - 1) % 2 + '0'),
                         font_size);
     }
 }
 
-void OLED_ShowFloatNum(uint8_t x, uint8_t y, double number,
+void SSD1306_ShowFloatNum(uint8_t x, uint8_t y, double number,
                         uint8_t int_length, uint8_t fra_length,
                         uint8_t font_size)
 {
@@ -355,28 +355,28 @@ void OLED_ShowFloatNum(uint8_t x, uint8_t y, double number,
 
     if (number >= 0)
     {
-        OLED_ShowChar(x, y, '+', font_size);
+        SSD1306_ShowChar(x, y, '+', font_size);
     }
     else
     {
-        OLED_ShowChar(x, y, '-', font_size);
+        SSD1306_ShowChar(x, y, '-', font_size);
         number = -number;
     }
 
     int_num = (uint32_t)number;
     number -= int_num;
-    pow_num = OLED_Pow(10, fra_length);
+    pow_num = SSD1306_Pow(10, fra_length);
     fra_num = (uint32_t)(number * pow_num + 0.5);
     int_num += fra_num / pow_num;
     fra_num %= pow_num;
 
-    OLED_ShowNum((uint8_t)(x + font_size), y, int_num, int_length, font_size);
-    OLED_ShowChar((uint8_t)(x + (int_length + 1) * font_size), y, '.', font_size);
-    OLED_ShowNum((uint8_t)(x + (int_length + 2) * font_size),
+    SSD1306_ShowNum((uint8_t)(x + font_size), y, int_num, int_length, font_size);
+    SSD1306_ShowChar((uint8_t)(x + (int_length + 1) * font_size), y, '.', font_size);
+    SSD1306_ShowNum((uint8_t)(x + (int_length + 2) * font_size),
                     y, fra_num, fra_length, font_size);
 }
 
-void OLED_ShowChinese(uint8_t x, uint8_t y, const char *chinese)
+void SSD1306_ShowChinese(uint8_t x, uint8_t y, const char *chinese)
 {
     uint8_t p_chinese = 0;
     uint8_t p_index;
@@ -401,13 +401,13 @@ void OLED_ShowChinese(uint8_t x, uint8_t y, const char *chinese)
                 }
             }
 
-            OLED_ShowImage((uint8_t)(x + ((i + 1) / OLED_CHN_CHAR_WIDTH - 1) * 16),
+            SSD1306_ShowImage((uint8_t)(x + ((i + 1) / OLED_CHN_CHAR_WIDTH - 1) * 16),
                             y, 16, 16, OLED_CF16x16[p_index].Data);
         }
     }
 }
 
-void OLED_ShowImage(uint8_t x, uint8_t y, uint8_t width,
+void SSD1306_ShowImage(uint8_t x, uint8_t y, uint8_t width,
                     uint8_t height, const uint8_t *image)
 {
     uint8_t i;
@@ -418,7 +418,7 @@ void OLED_ShowImage(uint8_t x, uint8_t y, uint8_t width,
         return;
     }
 
-    OLED_ClearArea(x, y, width, height);
+    SSD1306_ClearArea(x, y, width, height);
 
     for (j = 0; j < (height - 1) / 8 + 1; j++)
     {
@@ -433,51 +433,51 @@ void OLED_ShowImage(uint8_t x, uint8_t y, uint8_t width,
                 return;
             }
 
-            OLED_DisplayBuf[y / 8 + j][x + i] |= (uint8_t)(image[j * width + i] << (y % 8));
+            SSD1306_DisplayBuf[y / 8 + j][x + i] |= (uint8_t)(image[j * width + i] << (y % 8));
 
             if (y / 8 + j + 1 > 7 || (y % 8) == 0)
             {
                 continue;
             }
 
-            OLED_DisplayBuf[y / 8 + j + 1][x + i] |=
+            SSD1306_DisplayBuf[y / 8 + j + 1][x + i] |=
                 (uint8_t)(image[j * width + i] >> (8 - y % 8));
         }
     }
 }
 
-void OLED_Printf(uint8_t x, uint8_t y, uint8_t font_size, const char *format, ...)
+void SSD1306_Printf(uint8_t x, uint8_t y, uint8_t font_size, const char *format, ...)
 {
-    char string[OLED_PRINTF_BUF_SIZE];
+    char string[SSD1306_PRINTF_BUF_SIZE];
     va_list arg;
 
     va_start(arg, format);
     vsnprintf(string, sizeof(string), format, arg);
     va_end(arg);
-    OLED_ShowString(x, y, string, font_size);
+    SSD1306_ShowString(x, y, string, font_size);
 }
 
-void OLED_DrawPoint(uint8_t x, uint8_t y)
+void SSD1306_DrawPoint(uint8_t x, uint8_t y)
 {
     if (x > 127 || y > 63)
     {
         return;
     }
 
-    OLED_DisplayBuf[y / 8][x] |= (uint8_t)(0x01 << (y % 8));
+    SSD1306_DisplayBuf[y / 8][x] |= (uint8_t)(0x01 << (y % 8));
 }
 
-uint8_t OLED_GetPoint(uint8_t x, uint8_t y)
+uint8_t SSD1306_GetPoint(uint8_t x, uint8_t y)
 {
     if (x > 127 || y > 63)
     {
         return 0;
     }
 
-    return (OLED_DisplayBuf[y / 8][x] & (0x01 << (y % 8))) ? 1 : 0;
+    return (SSD1306_DisplayBuf[y / 8][x] & (0x01 << (y % 8))) ? 1 : 0;
 }
 
-void OLED_DrawLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1)
+void SSD1306_DrawLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1)
 {
     int16_t x;
     int16_t y;
@@ -504,7 +504,7 @@ void OLED_DrawLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1)
         }
         for (x = sx0; x <= sx1; x++)
         {
-            OLED_DrawPoint((uint8_t)x, (uint8_t)sy0);
+            SSD1306_DrawPoint((uint8_t)x, (uint8_t)sy0);
         }
     }
     else if (sx0 == sx1)
@@ -517,7 +517,7 @@ void OLED_DrawLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1)
         }
         for (y = sy0; y <= sy1; y++)
         {
-            OLED_DrawPoint((uint8_t)sx0, (uint8_t)y);
+            SSD1306_DrawPoint((uint8_t)sx0, (uint8_t)y);
         }
     }
     else
@@ -550,10 +550,10 @@ void OLED_DrawLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1)
 
         while (x <= sx1)
         {
-            if (yflag && xyflag) { OLED_DrawPoint((uint8_t)y, (uint8_t)(-x)); }
-            else if (yflag) { OLED_DrawPoint((uint8_t)x, (uint8_t)(-y)); }
-            else if (xyflag) { OLED_DrawPoint((uint8_t)y, (uint8_t)x); }
-            else { OLED_DrawPoint((uint8_t)x, (uint8_t)y); }
+            if (yflag && xyflag) { SSD1306_DrawPoint((uint8_t)y, (uint8_t)(-x)); }
+            else if (yflag) { SSD1306_DrawPoint((uint8_t)x, (uint8_t)(-y)); }
+            else if (xyflag) { SSD1306_DrawPoint((uint8_t)y, (uint8_t)x); }
+            else { SSD1306_DrawPoint((uint8_t)x, (uint8_t)y); }
 
             x++;
             if (d < 0)
@@ -569,7 +569,7 @@ void OLED_DrawLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1)
     }
 }
 
-void OLED_DrawRectangle(uint8_t x, uint8_t y, uint8_t width,
+void SSD1306_DrawRectangle(uint8_t x, uint8_t y, uint8_t width,
                         uint8_t height, uint8_t is_filled)
 {
     uint8_t i;
@@ -579,13 +579,13 @@ void OLED_DrawRectangle(uint8_t x, uint8_t y, uint8_t width,
     {
         for (i = x; i < x + width; i++)
         {
-            OLED_DrawPoint(i, y);
-            OLED_DrawPoint(i, (uint8_t)(y + height - 1));
+            SSD1306_DrawPoint(i, y);
+            SSD1306_DrawPoint(i, (uint8_t)(y + height - 1));
         }
         for (i = y; i < y + height; i++)
         {
-            OLED_DrawPoint(x, i);
-            OLED_DrawPoint((uint8_t)(x + width - 1), i);
+            SSD1306_DrawPoint(x, i);
+            SSD1306_DrawPoint((uint8_t)(x + width - 1), i);
         }
     }
     else
@@ -594,13 +594,13 @@ void OLED_DrawRectangle(uint8_t x, uint8_t y, uint8_t width,
         {
             for (j = y; j < y + height; j++)
             {
-                OLED_DrawPoint(i, j);
+                SSD1306_DrawPoint(i, j);
             }
         }
     }
 }
 
-void OLED_DrawTriangle(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1,
+void SSD1306_DrawTriangle(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1,
                         uint8_t x2, uint8_t y2, uint8_t is_filled)
 {
     uint8_t minx = x0;
@@ -614,9 +614,9 @@ void OLED_DrawTriangle(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1,
 
     if (!is_filled)
     {
-        OLED_DrawLine(x0, y0, x1, y1);
-        OLED_DrawLine(x0, y0, x2, y2);
-        OLED_DrawLine(x1, y1, x2, y2);
+        SSD1306_DrawLine(x0, y0, x1, y1);
+        SSD1306_DrawLine(x0, y0, x2, y2);
+        SSD1306_DrawLine(x1, y1, x2, y2);
     }
     else
     {
@@ -633,16 +633,16 @@ void OLED_DrawTriangle(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1,
         {
             for (j = miny; j <= maxy; j++)
             {
-                if (OLED_pnpoly(3, vx, vy, i, j))
+                if (SSD1306_pnpoly(3, vx, vy, i, j))
                 {
-                    OLED_DrawPoint(i, j);
+                    SSD1306_DrawPoint(i, j);
                 }
             }
         }
     }
 }
 
-void OLED_DrawCircle(uint8_t x, uint8_t y, uint8_t radius, uint8_t is_filled)
+void SSD1306_DrawCircle(uint8_t x, uint8_t y, uint8_t radius, uint8_t is_filled)
 {
     int16_t px = 0;
     int16_t py = radius;
@@ -651,26 +651,26 @@ void OLED_DrawCircle(uint8_t x, uint8_t y, uint8_t radius, uint8_t is_filled)
 
     while (px <= py)
     {
-        OLED_DrawPoint((uint8_t)(x + px), (uint8_t)(y + py));
-        OLED_DrawPoint((uint8_t)(x + py), (uint8_t)(y + px));
-        OLED_DrawPoint((uint8_t)(x - px), (uint8_t)(y - py));
-        OLED_DrawPoint((uint8_t)(x - py), (uint8_t)(y - px));
-        OLED_DrawPoint((uint8_t)(x + px), (uint8_t)(y - py));
-        OLED_DrawPoint((uint8_t)(x + py), (uint8_t)(y - px));
-        OLED_DrawPoint((uint8_t)(x - px), (uint8_t)(y + py));
-        OLED_DrawPoint((uint8_t)(x - py), (uint8_t)(y + px));
+        SSD1306_DrawPoint((uint8_t)(x + px), (uint8_t)(y + py));
+        SSD1306_DrawPoint((uint8_t)(x + py), (uint8_t)(y + px));
+        SSD1306_DrawPoint((uint8_t)(x - px), (uint8_t)(y - py));
+        SSD1306_DrawPoint((uint8_t)(x - py), (uint8_t)(y - px));
+        SSD1306_DrawPoint((uint8_t)(x + px), (uint8_t)(y - py));
+        SSD1306_DrawPoint((uint8_t)(x + py), (uint8_t)(y - px));
+        SSD1306_DrawPoint((uint8_t)(x - px), (uint8_t)(y + py));
+        SSD1306_DrawPoint((uint8_t)(x - py), (uint8_t)(y + px));
 
         if (is_filled)
         {
             for (j = -py; j < py; j++)
             {
-                OLED_DrawPoint((uint8_t)(x + px), (uint8_t)(y + j));
-                OLED_DrawPoint((uint8_t)(x - px), (uint8_t)(y + j));
+                SSD1306_DrawPoint((uint8_t)(x + px), (uint8_t)(y + j));
+                SSD1306_DrawPoint((uint8_t)(x - px), (uint8_t)(y + j));
             }
             for (j = -px; j < px; j++)
             {
-                OLED_DrawPoint((uint8_t)(x - py), (uint8_t)(y + j));
-                OLED_DrawPoint((uint8_t)(x + py), (uint8_t)(y + j));
+                SSD1306_DrawPoint((uint8_t)(x - py), (uint8_t)(y + j));
+                SSD1306_DrawPoint((uint8_t)(x + py), (uint8_t)(y + j));
             }
         }
 
@@ -687,7 +687,7 @@ void OLED_DrawCircle(uint8_t x, uint8_t y, uint8_t radius, uint8_t is_filled)
     }
 }
 
-void OLED_DrawEllipse(uint8_t x, uint8_t y, uint8_t a, uint8_t b, uint8_t is_filled)
+void SSD1306_DrawEllipse(uint8_t x, uint8_t y, uint8_t a, uint8_t b, uint8_t is_filled)
 {
     int16_t px = 0;
     int16_t py = b;
@@ -701,14 +701,14 @@ void OLED_DrawEllipse(uint8_t x, uint8_t y, uint8_t a, uint8_t b, uint8_t is_fil
         {
             for (j = -py; j < py; j++)
             {
-                OLED_DrawPoint((uint8_t)(x + px), (uint8_t)(y + j));
-                OLED_DrawPoint((uint8_t)(x - px), (uint8_t)(y + j));
+                SSD1306_DrawPoint((uint8_t)(x + px), (uint8_t)(y + j));
+                SSD1306_DrawPoint((uint8_t)(x - px), (uint8_t)(y + j));
             }
         }
-        OLED_DrawPoint((uint8_t)(x + px), (uint8_t)(y + py));
-        OLED_DrawPoint((uint8_t)(x - px), (uint8_t)(y - py));
-        OLED_DrawPoint((uint8_t)(x - px), (uint8_t)(y + py));
-        OLED_DrawPoint((uint8_t)(x + px), (uint8_t)(y - py));
+        SSD1306_DrawPoint((uint8_t)(x + px), (uint8_t)(y + py));
+        SSD1306_DrawPoint((uint8_t)(x - px), (uint8_t)(y - py));
+        SSD1306_DrawPoint((uint8_t)(x - px), (uint8_t)(y + py));
+        SSD1306_DrawPoint((uint8_t)(x + px), (uint8_t)(y - py));
 
         if (d1 <= 0)
         {
@@ -731,14 +731,14 @@ void OLED_DrawEllipse(uint8_t x, uint8_t y, uint8_t a, uint8_t b, uint8_t is_fil
         {
             for (j = -py; j < py; j++)
             {
-                OLED_DrawPoint((uint8_t)(x + px), (uint8_t)(y + j));
-                OLED_DrawPoint((uint8_t)(x - px), (uint8_t)(y + j));
+                SSD1306_DrawPoint((uint8_t)(x + px), (uint8_t)(y + j));
+                SSD1306_DrawPoint((uint8_t)(x - px), (uint8_t)(y + j));
             }
         }
-        OLED_DrawPoint((uint8_t)(x + px), (uint8_t)(y + py));
-        OLED_DrawPoint((uint8_t)(x - px), (uint8_t)(y - py));
-        OLED_DrawPoint((uint8_t)(x - px), (uint8_t)(y + py));
-        OLED_DrawPoint((uint8_t)(x + px), (uint8_t)(y - py));
+        SSD1306_DrawPoint((uint8_t)(x + px), (uint8_t)(y + py));
+        SSD1306_DrawPoint((uint8_t)(x - px), (uint8_t)(y - py));
+        SSD1306_DrawPoint((uint8_t)(x - px), (uint8_t)(y + py));
+        SSD1306_DrawPoint((uint8_t)(x + px), (uint8_t)(y - py));
 
         if (d2 <= 0)
         {
@@ -753,7 +753,7 @@ void OLED_DrawEllipse(uint8_t x, uint8_t y, uint8_t a, uint8_t b, uint8_t is_fil
     }
 }
 
-void OLED_DrawArc(uint8_t x, uint8_t y, uint8_t radius,
+void SSD1306_DrawArc(uint8_t x, uint8_t y, uint8_t radius,
                     int16_t start_angle, int16_t end_angle, uint8_t is_filled)
 {
     int16_t px = 0;
@@ -763,26 +763,26 @@ void OLED_DrawArc(uint8_t x, uint8_t y, uint8_t radius,
 
     while (px <= py)
     {
-        if (OLED_IsInAngle(px, py, start_angle, end_angle)) { OLED_DrawPoint((uint8_t)(x + px), (uint8_t)(y + py)); }
-        if (OLED_IsInAngle(py, px, start_angle, end_angle)) { OLED_DrawPoint((uint8_t)(x + py), (uint8_t)(y + px)); }
-        if (OLED_IsInAngle(-px, -py, start_angle, end_angle)) { OLED_DrawPoint((uint8_t)(x - px), (uint8_t)(y - py)); }
-        if (OLED_IsInAngle(-py, -px, start_angle, end_angle)) { OLED_DrawPoint((uint8_t)(x - py), (uint8_t)(y - px)); }
-        if (OLED_IsInAngle(px, -py, start_angle, end_angle)) { OLED_DrawPoint((uint8_t)(x + px), (uint8_t)(y - py)); }
-        if (OLED_IsInAngle(py, -px, start_angle, end_angle)) { OLED_DrawPoint((uint8_t)(x + py), (uint8_t)(y - px)); }
-        if (OLED_IsInAngle(-px, py, start_angle, end_angle)) { OLED_DrawPoint((uint8_t)(x - px), (uint8_t)(y + py)); }
-        if (OLED_IsInAngle(-py, px, start_angle, end_angle)) { OLED_DrawPoint((uint8_t)(x - py), (uint8_t)(y + px)); }
+        if (SSD1306_IsInAngle(px, py, start_angle, end_angle)) { SSD1306_DrawPoint((uint8_t)(x + px), (uint8_t)(y + py)); }
+        if (SSD1306_IsInAngle(py, px, start_angle, end_angle)) { SSD1306_DrawPoint((uint8_t)(x + py), (uint8_t)(y + px)); }
+        if (SSD1306_IsInAngle(-px, -py, start_angle, end_angle)) { SSD1306_DrawPoint((uint8_t)(x - px), (uint8_t)(y - py)); }
+        if (SSD1306_IsInAngle(-py, -px, start_angle, end_angle)) { SSD1306_DrawPoint((uint8_t)(x - py), (uint8_t)(y - px)); }
+        if (SSD1306_IsInAngle(px, -py, start_angle, end_angle)) { SSD1306_DrawPoint((uint8_t)(x + px), (uint8_t)(y - py)); }
+        if (SSD1306_IsInAngle(py, -px, start_angle, end_angle)) { SSD1306_DrawPoint((uint8_t)(x + py), (uint8_t)(y - px)); }
+        if (SSD1306_IsInAngle(-px, py, start_angle, end_angle)) { SSD1306_DrawPoint((uint8_t)(x - px), (uint8_t)(y + py)); }
+        if (SSD1306_IsInAngle(-py, px, start_angle, end_angle)) { SSD1306_DrawPoint((uint8_t)(x - py), (uint8_t)(y + px)); }
 
         if (is_filled)
         {
             for (j = -py; j < py; j++)
             {
-                if (OLED_IsInAngle(px, j, start_angle, end_angle)) { OLED_DrawPoint((uint8_t)(x + px), (uint8_t)(y + j)); }
-                if (OLED_IsInAngle(-px, j, start_angle, end_angle)) { OLED_DrawPoint((uint8_t)(x - px), (uint8_t)(y + j)); }
+                if (SSD1306_IsInAngle(px, j, start_angle, end_angle)) { SSD1306_DrawPoint((uint8_t)(x + px), (uint8_t)(y + j)); }
+                if (SSD1306_IsInAngle(-px, j, start_angle, end_angle)) { SSD1306_DrawPoint((uint8_t)(x - px), (uint8_t)(y + j)); }
             }
             for (j = -px; j < px; j++)
             {
-                if (OLED_IsInAngle(-py, j, start_angle, end_angle)) { OLED_DrawPoint((uint8_t)(x - py), (uint8_t)(y + j)); }
-                if (OLED_IsInAngle(py, j, start_angle, end_angle)) { OLED_DrawPoint((uint8_t)(x + py), (uint8_t)(y + j)); }
+                if (SSD1306_IsInAngle(-py, j, start_angle, end_angle)) { SSD1306_DrawPoint((uint8_t)(x - py), (uint8_t)(y + j)); }
+                if (SSD1306_IsInAngle(py, j, start_angle, end_angle)) { SSD1306_DrawPoint((uint8_t)(x + py), (uint8_t)(y + j)); }
             }
         }
 
@@ -799,13 +799,13 @@ void OLED_DrawArc(uint8_t x, uint8_t y, uint8_t radius,
     }
 }
 
-uint8_t OLED_TestConnection(void)
+uint8_t SSD1306_TestConnection(void)
 {
     elab_err_t ret;
 
     if (oled_device == NULL)
     {
-        oled_device = elab_device_find(OLED_I2C_DEVICE_NAME);
+        oled_device = elab_device_find(SSD1306_I2C_DEVICE_NAME);
     }
 
     if (oled_device == NULL)
@@ -813,22 +813,22 @@ uint8_t OLED_TestConnection(void)
         return 0;
     }
 
-    ret = OLED_WriteCommand(0xAE);
+    ret = SSD1306_WriteCommand(0xAE);
     return (ret > 0) ? 1U : 0U;
 }
 
-void OLED_TestAllOn(void)
+void SSD1306_TestAllOn(void)
 {
-    OLED_WriteCommand(0xA5);
+    SSD1306_WriteCommand(0xA5);
 }
 
-void OLED_TestResumeRAM(void)
+void SSD1306_TestResumeRAM(void)
 {
-    OLED_WriteCommand(0xA4);
-    OLED_Update();
+    SSD1306_WriteCommand(0xA4);
+    SSD1306_Update();
 }
 
-void device_oled096_init(void)
+void device_ssd1306_init(void)
 {
     static const uint8_t init_cmds[] =
     {
@@ -851,53 +851,53 @@ void device_oled096_init(void)
     };
     uint8_t i;
 
-    oled_device = elab_device_find(OLED_I2C_DEVICE_NAME);
+    oled_device = elab_device_find(SSD1306_I2C_DEVICE_NAME);
     elab_assert(oled_device != NULL);
 
     for (i = 0; i < sizeof(init_cmds); i++)
     {
-        OLED_WriteCommand(init_cmds[i]);
+        SSD1306_WriteCommand(init_cmds[i]);
     }
 
-    OLED_Clear();
-    OLED_Update();
+    SSD1306_Clear();
+    SSD1306_Update();
 	
 	/*在(0, 0)位置显示字符'A'，字体大小为8*16点阵*/
-	//OLED_ShowChar(0, 0, 'A', OLED_8X16);
+	//SSD1306_ShowChar(0, 0, 'A', SSD1306_8X16);
 	
 	/*在(16, 0)位置显示字符串"Hello World!"，字体大小为8*16点阵*/
-	OLED_ShowString(0, 0, "bilibili space/6451333", OLED_8X16);
+	SSD1306_ShowString(0, 0, "bilibili space/6451333", SSD1306_8X16);
 	
 	/*在(0, 18)位置显示字符'A'，字体大小为6*8点阵*/
-	OLED_ShowChar(0, 18, 'A', OLED_6X8);
+	SSD1306_ShowChar(0, 18, 'A', SSD1306_6X8);
 	
 	/*在(16, 18)位置显示字符串"Hello World!"，字体大小为6*8点阵*/
-	OLED_ShowString(16, 18, "Hello World!", OLED_6X8);
+	SSD1306_ShowString(16, 18, "Hello World!", SSD1306_6X8);
 	
 	/*在(0, 28)位置显示数字12345，长度为5，字体大小为6*8点阵*/
-	OLED_ShowNum(0, 28, 12345, 5, OLED_6X8);
+	SSD1306_ShowNum(0, 28, 12345, 5, SSD1306_6X8);
 	
 	/*在(40, 28)位置显示有符号数字-66，长度为2，字体大小为6*8点阵*/
-	OLED_ShowSignedNum(40, 28, -66, 2, OLED_6X8);
+	SSD1306_ShowSignedNum(40, 28, -66, 2, SSD1306_6X8);
 	
 	/*在(70, 28)位置显示十六进制数字0xA5A5，长度为4，字体大小为6*8点阵*/
-	OLED_ShowHexNum(70, 28, 0xA5A5, 4, OLED_6X8);
+	SSD1306_ShowHexNum(70, 28, 0xA5A5, 4, SSD1306_6X8);
 	
 	/*在(0, 38)位置显示二进制数字0xA5，长度为8，字体大小为6*8点阵*/
-	OLED_ShowBinNum(0, 38, 0xA5, 8, OLED_6X8);
+	SSD1306_ShowBinNum(0, 38, 0xA5, 8, SSD1306_6X8);
 	
 	/*在(60, 38)位置显示浮点数字123.45，整数部分长度为3，小数部分长度为2，字体大小为6*8点阵*/
-	OLED_ShowFloatNum(60, 38, 123.45, 3, 2, OLED_6X8);
+	SSD1306_ShowFloatNum(60, 38, 123.45, 3, 2, SSD1306_6X8);
 	
-	OLED_ShowString(0, 48, "OLED Ready", OLED_6X8);
+	SSD1306_ShowString(0, 48, "OLED Ready", SSD1306_6X8);
 	
 	/*在(96, 48)位置显示图像，宽16像素，高16像素，图像数据为Diode数组*/
-	OLED_ShowImage(96, 48, 16, 16, Diode);
+	SSD1306_ShowImage(96, 48, 16, 16, Diode);
 	
 	/*在(96, 18)位置打印格式化字符串，字体大小为6*8点阵，格式化字符串为"[%02d]"*/
-	OLED_Printf(96, 18, OLED_6X8, "[%02d]", 6);
-    OLED_Update();
+	SSD1306_Printf(96, 18, SSD1306_6X8, "[%02d]", 6);
+    SSD1306_Update();
 
 }
 
-ELAB_INIT_EXPORT(device_oled096_init, EXPORT_APP);
+ELAB_INIT_EXPORT(device_ssd1306_init, EXPORT_APP);

@@ -9,7 +9,6 @@
 /* ==================== [Includes] ========================================== */
 #include "elab_log.h"
 #include "elab_assert.h"
-#include "elab_i2c.h"
 #include "elab_export.h"
 #include "bsp_dwt.h"
 #include "driver_bus.h"
@@ -44,15 +43,14 @@ static void SoftI2C_Ack(void);
 static void SoftI2C_NoAck(void);
 
 /* ==================== [Static Variables] ================================== */
-static const elab_i2c_bus_ops_t pin_driver_ops =
+
+ static const elab_i2c_bus_ops_t pin_driver_ops =
 {
     .xfer = _xfer,
     .config = _config,
 };
-static elab_i2c_bus_t soft_i2c_bus;
-
 /* ==================== [Public Functions] ================================== */
-static void driver_i2c_bus_init(const char *i2c_bus_name)
+static void driver_i2c_bus_init(elab_i2c_bus_t *i2c_bus, const char *i2c_bus_name)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
 
@@ -65,14 +63,13 @@ static void driver_i2c_bus_init(const char *i2c_bus_name)
     I2C_SCL_HIGH;
     I2C_SDA_HIGH;
 
-    elab_i2c_bus_register(&soft_i2c_bus, i2c_bus_name, &pin_driver_ops, NULL);
+    elab_i2c_bus_register(i2c_bus, i2c_bus_name, &pin_driver_ops, NULL);
 }
 
 
-
-void driver_i2c_bus_register(const char *i2c_bus_name)
+void driver_i2c_bus_register(elab_i2c_bus_t *i2c_bus, const char *i2c_bus_name)
 {
-    driver_i2c_bus_init(i2c_bus_name);
+    driver_i2c_bus_init(i2c_bus, i2c_bus_name);
 }
 
 /* ==================== [Static Functions] ================================== */
