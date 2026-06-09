@@ -21,13 +21,25 @@
  
  /* ==================== [Static Prototypes] ========================================== */
  
- /* ==================== [Static Variables] ========================================== */
+/* ==================== [Static Variables] ========================================== */
 static elab_pin_driver_t led_run_pin;
- /* ==================== [Static Functions] ================================== */
-static void driver_pin_mcu_export(void){
-elab_driver_pin_init(&led_run_pin, "PIN_PC13", "C.13");
-elab_pin_set_mode(&led_run_pin.device.super, PIN_MODE_OUTPUT_PP);
+static const elab_pin_dt_config_t led_run_pin_dt_config =
+{
+    .name = "led_pin",
+    .port = "GPIOC",
+    .pin = 13,
+    .mode = PIN_MODE_OUTPUT_PP,
+    .init_level = false,
+    .has_init_level = true,
+    .active_low = false,
+};
+
+/* ==================== [Static Functions] ================================== */
+static void driver_pin_mcu_export(void)
+{
+    elab_driver_pin_init_cfg(&led_run_pin, &led_run_pin_dt_config);
 }
+
  /* ==================== [Public Functions] ================================== */
 ELAB_INIT_EXPORT(driver_pin_mcu_export,EXPORT_DRVIVER);
 

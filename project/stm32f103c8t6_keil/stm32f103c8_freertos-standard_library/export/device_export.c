@@ -26,7 +26,7 @@ static const elab_i2c_config_t config_oled =
 /* ==================== [Static Functions] ================================== */
 static void device_adapter_export(void)
 {
-    elab_led_pin_register(&led_run, "led_run", "PIN_PC13", false);
+    elab_led_pin_register(&led_run, "led_run", "led_pin", false);
     elab_led_set_value(&led_run.super, 4);
 
     elab_i2c_register(&dev_i2c_oled, "oled", "i2c0", config_oled);

@@ -589,6 +589,11 @@
               <FilePath>..\Driver\driver_pin_mcu.c</FilePath>
             </File>
             <File>
+              <FileName>driver_pin_dt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dt\driver_pin_dt.c</FilePath>
+            </File>
+            <File>
               <FileName>drv_util.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Driver\drv_util.c</FilePath>
@@ -604,9 +609,9 @@
           <GroupName>DEVICE</GroupName>
           <Files>
             <File>
-              <FileName>elab_led_adapter.c</FileName>
+              <FileName>elab_led_pin.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Device\elab_led_adapter.c</FilePath>
+              <FilePath>..\Device\elab_led_pin.c</FilePath>
             </File>
           </Files>
         </Group>
